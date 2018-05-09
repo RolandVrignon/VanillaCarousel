@@ -15,22 +15,27 @@ class Carousel{
       slidesVisible : 1
     }, options)
 
-    this.children = [].slice.call(element.children)
-
-    let ratio = this.children.length / this.options.slidesVisible
+    let children = [].slice.call(element.children)
     let root = this.createDivWithClass('carousel')
     let container = this.createDivWithClass('carousel__container')
 
-    container.style.width = (ratio * 100) + "%"
     root.appendChild(container)
     this.element.appendChild(root)
 
-    this.children.forEach((child) => {
+    this.items = children.map((child) => {
       let item = this.createDivWithClass('carousel__item')
       item.appendChild(child)
       container.appendChild(item)
+      return item
     })
-    debugger
+
+    this.setStyle()
+  }
+
+  setStyle () {
+    let ratio = this.items.length / this.options.slidesVisible
+    this.container.style.width = (ratio * 100) + "%"
+    this.items.forEach(item => item.style.width = ((100 / this.options.slidesVisible) / ratio) + "%")
   }
 
 

@@ -61,6 +61,8 @@ body{
 
 .carousel{
   position: relative;
+  overflow: hidden;
+
 }
 
 .carousel__container::after{
