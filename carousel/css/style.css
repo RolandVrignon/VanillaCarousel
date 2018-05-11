@@ -61,8 +61,11 @@ body{
 
 .carousel{
   position: relative;
-  overflow: hidden;
+}
 
+.carousel__container{
+  transition: transform 0.3s;
+  transform: translate3d(0,0,0);
 }
 
 .carousel__container::after{
@@ -74,4 +77,34 @@ body{
 .carousel__item{
   float: left;
   display: inline-block;
+}
+
+.carousel__next, .carousel__prev{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: #fff url('../right-arrow.svg') center no-repeat;
+  background-size: 20px 20px;
+  border-radius: 50%;
+  top: 50%;
+  right: -20px;
+  box-shadow: 0 15px 35px #3232321a, 0 5px 15px #0000001a;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.carousel__next:hover, .carousel__prev:hover{
+  transform: scale(1.2);
+}
+
+.carousel__prev{
+  right: auto;
+  left: -20px;
+  background: #fff url('../left-arrow.svg') center no-repeat;
+  background-size: 20px 20px;
+
+}
+
+.carousel__prev-hidden, .carousel__next-hidden{
+  opacity: 0;
 }
